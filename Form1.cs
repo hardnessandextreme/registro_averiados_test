@@ -17,6 +17,8 @@ namespace registro_dañados
             txt_numserie.Text = "-";
         }
 
+
+
         bool Guardar_datos(string fecha, string tipo, string marca, string modelo, string num_serie, string num_activo)
         {
             try
@@ -37,6 +39,7 @@ namespace registro_dañados
         public Form1()
         {
             InitializeComponent();
+            //Verificar_archivos();
             cb_marca.SelectedIndex = 0;
             cb_tipo.SelectedIndex = 0;
 

@@ -127,7 +127,7 @@
             // 
             cb_tipo.DropDownStyle = ComboBoxStyle.DropDownList;
             cb_tipo.FormattingEnabled = true;
-            cb_tipo.Items.AddRange(new object[] { "- SELECCIONE TIPO -", "MONITOR", "CPU", "UPS", "ROUTER", "TELEFONO", "UBIQUITI", "SWITCH", "LECTOR BARRA", "LAPTOP" });
+            cb_tipo.Items.AddRange(new object[] { "-" });
             cb_tipo.Location = new Point(214, 67);
             cb_tipo.Margin = new Padding(2);
             cb_tipo.Name = "cb_tipo";
@@ -138,7 +138,7 @@
             // 
             cb_marca.DropDownStyle = ComboBoxStyle.DropDownList;
             cb_marca.FormattingEnabled = true;
-            cb_marca.Items.AddRange(new object[] { "- SELECCIONE MARCA -", "HP", "DELL", "ACER", "AOC", "CISCO", "SAMSUNG", "LG", "PSION", "MICRO TIK", "NANOSTATION M2", "GRANDSTREAM", "APC", "TRIPP LITE" });
+            cb_marca.Items.AddRange(new object[] { "-" });
             cb_marca.Location = new Point(214, 111);
             cb_marca.Margin = new Padding(2);
             cb_marca.Name = "cb_marca";
@@ -226,7 +226,7 @@
             Controls.Add(label1);
             Margin = new Padding(2);
             Name = "Form1";
-            Text = "Form1";
+            Text = "Registro de equipos dañados";
             ResumeLayout(false);
             PerformLayout();
         }
