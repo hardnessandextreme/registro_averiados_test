@@ -17,6 +17,42 @@ namespace registro_dañados
             txt_numserie.Text = "-";
         }
 
+        void Verificar_archivos()
+        {
+            if (!Directory.Exists("datos"))
+            {
+                MessageBox.Show("No se encontró el directorio datos, se creará uno nuevo.", "Aviso");
+                DirectoryInfo directory = Directory.CreateDirectory("datos");
+            }
+
+            if (File.Exists("datos/tipos.txt") == false)
+            {
+                MessageBox.Show("No se encontró el archivo tipos.txt, se creará uno nuevo.", "Aviso");
+                using (StreamWriter archivo = new StreamWriter("datos/tipos.txt", true, Encoding.UTF8))
+                {
+
+                }
+            }
+
+            if (File.Exists("datos/marcas.txt") == false)
+            {
+                MessageBox.Show("No se encontró el archivo marcas.txt, se creará uno nuevo.", "Aviso");
+                using (StreamWriter archivo = new StreamWriter("datos/marcas.txt", true, Encoding.UTF8))
+                {
+
+                }
+            }
+
+            if (File.Exists("dañados.csv") == false)
+            {
+                MessageBox.Show("No se encontró el archivo dañados.csv, se creará uno nuevo.", "Aviso");
+                using (StreamWriter archivo = new StreamWriter("dañados.csv", true, Encoding.UTF8))
+                {
+                    archivo.WriteLine("FECHA;TIPO;MARCA;MODELO;SERIE;ACTIVO");
+                }
+            }
+        }
+
 
 
         bool Guardar_datos(string fecha, string tipo, string marca, string modelo, string num_serie, string num_activo)
@@ -39,7 +75,7 @@ namespace registro_dañados
         public Form1()
         {
             InitializeComponent();
-            //Verificar_archivos();
+            Verificar_archivos();
             cb_marca.SelectedIndex = 0;
             cb_tipo.SelectedIndex = 0;
 
