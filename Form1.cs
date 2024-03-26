@@ -16,6 +16,8 @@ namespace registro_dañados
             txt_modelo.Text = "-";
             txt_numactivo.Text = "-";
             txt_numserie.Text = "-";
+
+            lb_men.Text = "Campos limpiados correctamente";
         }
 
         void Verificar_archivos()
@@ -62,7 +64,7 @@ namespace registro_dañados
             using (StreamReader archivo = new StreamReader("datos/tipos.txt", Encoding.UTF8))
             {
                 string linea;
-                while ((linea = archivo.ReadLine()) != null)
+                while ((linea = archivo.ReadLine()!) != null)
                 {
                     tipos.Add(linea);
                 }
@@ -71,11 +73,13 @@ namespace registro_dañados
             using (StreamReader archivo = new StreamReader("datos/marcas.txt", Encoding.UTF8))
             {
                 string linea;
-                while ((linea = archivo.ReadLine()) != null)
+                while ((linea = archivo.ReadLine()!) != null)
                 {
                     marcas.Add(linea);
                 }
             }
+
+            lb_men.Text = "Tipos y marcas cargados correctamente";
 
             return (tipos, marcas);
         }
@@ -100,6 +104,8 @@ namespace registro_dañados
 
             cb_marca.SelectedIndex = 0;
             cb_tipo.SelectedIndex = 0;
+
+            lb_men.Text = "Combobox's actualizados correctamente";
 
         }
 
