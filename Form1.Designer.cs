@@ -43,12 +43,13 @@
             btn_actualizar = new Button();
             btn_limpiar = new Button();
             lb_men = new Label();
+            lb_fecha = new Label();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(39, 30);
+            label1.Location = new Point(43, 67);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
             label1.Size = new Size(42, 20);
@@ -58,7 +59,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(39, 74);
+            label2.Location = new Point(43, 111);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
             label2.Size = new Size(53, 20);
@@ -68,7 +69,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(39, 125);
+            label3.Location = new Point(43, 162);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
             label3.Size = new Size(64, 20);
@@ -78,7 +79,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(39, 173);
+            label4.Location = new Point(43, 210);
             label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
             label4.Size = new Size(122, 20);
@@ -88,7 +89,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(39, 224);
+            label5.Location = new Point(43, 261);
             label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
             label5.Size = new Size(131, 20);
@@ -97,7 +98,7 @@
             // 
             // txt_modelo
             // 
-            txt_modelo.Location = new Point(210, 125);
+            txt_modelo.Location = new Point(214, 162);
             txt_modelo.Margin = new Padding(2);
             txt_modelo.Name = "txt_modelo";
             txt_modelo.Size = new Size(146, 27);
@@ -106,7 +107,7 @@
             // 
             // txt_numserie
             // 
-            txt_numserie.Location = new Point(210, 173);
+            txt_numserie.Location = new Point(214, 210);
             txt_numserie.Margin = new Padding(2);
             txt_numserie.Name = "txt_numserie";
             txt_numserie.Size = new Size(146, 27);
@@ -115,7 +116,7 @@
             // 
             // txt_numactivo
             // 
-            txt_numactivo.Location = new Point(210, 224);
+            txt_numactivo.Location = new Point(214, 261);
             txt_numactivo.Margin = new Padding(2);
             txt_numactivo.Name = "txt_numactivo";
             txt_numactivo.Size = new Size(146, 27);
@@ -126,7 +127,7 @@
             // 
             cb_tipo.FormattingEnabled = true;
             cb_tipo.Items.AddRange(new object[] { "- SELECCIONE TIPO -", "MONITOR", "CPU", "UPS", "ROUTER", "TELEFONO", "UBIQUITI", "SWITCH", "LECTOR BARRA", "LAPTOP" });
-            cb_tipo.Location = new Point(210, 30);
+            cb_tipo.Location = new Point(214, 67);
             cb_tipo.Margin = new Padding(2);
             cb_tipo.Name = "cb_tipo";
             cb_tipo.Size = new Size(146, 28);
@@ -136,7 +137,7 @@
             // 
             cb_marca.FormattingEnabled = true;
             cb_marca.Items.AddRange(new object[] { "- SELECCIONE MARCA -", "HP", "DELL", "ACER", "AOC", "CISCO", "SAMSUNG", "LG", "PSION", "MICRO TIK", "NANOSTATION M2", "GRANDSTREAM", "APC", "TRIPP LITE" });
-            cb_marca.Location = new Point(210, 74);
+            cb_marca.Location = new Point(214, 111);
             cb_marca.Margin = new Padding(2);
             cb_marca.Name = "cb_marca";
             cb_marca.Size = new Size(146, 28);
@@ -144,7 +145,7 @@
             // 
             // btn_guardar
             // 
-            btn_guardar.Location = new Point(37, 339);
+            btn_guardar.Location = new Point(41, 354);
             btn_guardar.Margin = new Padding(2);
             btn_guardar.Name = "btn_guardar";
             btn_guardar.Size = new Size(90, 27);
@@ -155,7 +156,7 @@
             // 
             // btn_conv_excel
             // 
-            btn_conv_excel.Location = new Point(144, 339);
+            btn_conv_excel.Location = new Point(148, 354);
             btn_conv_excel.Margin = new Padding(2);
             btn_conv_excel.Name = "btn_conv_excel";
             btn_conv_excel.Size = new Size(112, 27);
@@ -165,7 +166,7 @@
             // 
             // btn_actualizar
             // 
-            btn_actualizar.Location = new Point(273, 339);
+            btn_actualizar.Location = new Point(277, 354);
             btn_actualizar.Margin = new Padding(2);
             btn_actualizar.Name = "btn_actualizar";
             btn_actualizar.Size = new Size(90, 27);
@@ -175,7 +176,7 @@
             // 
             // btn_limpiar
             // 
-            btn_limpiar.Location = new Point(144, 391);
+            btn_limpiar.Location = new Point(148, 406);
             btn_limpiar.Margin = new Padding(2);
             btn_limpiar.Name = "btn_limpiar";
             btn_limpiar.Size = new Size(112, 27);
@@ -186,18 +187,26 @@
             // 
             // lb_men
             // 
-            lb_men.AutoSize = true;
-            lb_men.Location = new Point(176, 285);
+            lb_men.Location = new Point(41, 303);
             lb_men.Name = "lb_men";
-            lb_men.Size = new Size(50, 20);
+            lb_men.Size = new Size(319, 27);
             lb_men.TabIndex = 14;
-            lb_men.Text = "label6";
+            lb_men.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // lb_fecha
+            // 
+            lb_fecha.Location = new Point(41, 21);
+            lb_fecha.Name = "lb_fecha";
+            lb_fecha.Size = new Size(319, 27);
+            lb_fecha.TabIndex = 15;
+            lb_fecha.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(408, 435);
+            ClientSize = new Size(408, 467);
+            Controls.Add(lb_fecha);
             Controls.Add(lb_men);
             Controls.Add(btn_limpiar);
             Controls.Add(btn_actualizar);
@@ -237,5 +246,6 @@
         private Button btn_actualizar;
         private Button btn_limpiar;
         private Label lb_men;
+        private Label lb_fecha;
     }
 }

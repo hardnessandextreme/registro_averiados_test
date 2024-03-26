@@ -7,6 +7,7 @@ namespace registro_dañados
 {
     public partial class Form1 : Form
     {
+        
         void Limpiar()
         {
             cb_tipo.SelectedIndex = 0;
@@ -16,13 +17,13 @@ namespace registro_dañados
             txt_numserie.Text = "-";
         }
 
-        bool Guardar_datos(string tipo, string marca, string modelo, string num_activo, string num_serie)
+        bool Guardar_datos(string fecha, string tipo, string marca, string modelo, string num_serie, string num_activo)
         {
             try
             {
                 using (StreamWriter archivo = new StreamWriter("dañados.csv", true, Encoding.UTF8))
                 {
-                    archivo.WriteLine($"{tipo};{marca};{modelo};{num_serie};{num_activo}");
+                    archivo.WriteLine($"{fecha};{tipo};{marca};{modelo};{num_serie};{num_activo}");
                 }
                 return true;
             }
@@ -39,6 +40,10 @@ namespace registro_dañados
             cb_marca.SelectedIndex = 0;
             cb_tipo.SelectedIndex = 0;
 
+            DateTime fecha = DateTime.Now;
+
+            lb_fecha.Text = fecha.ToString("dd-MM-yyyy");
+
         }
 
         private void btn_limpiar_Click(object sender, EventArgs e)
@@ -48,11 +53,12 @@ namespace registro_dañados
 
         private void btn_guardar_Click(object sender, EventArgs e)
         {
+            String fecha = lb_fecha.Text;
             String tipo = cb_tipo.Text;
             String marca = cb_marca.Text;
-            String modelo = txt_modelo.Text;
-            String num_serie = txt_numserie.Text;
-            String num_activo = $"80042000 {txt_numactivo.Text}";
+            String modelo = txt_modelo.Text.ToUpper();
+            String num_serie = txt_numserie.Text.ToUpper();
+            String num_activo = $"80042000 {txt_numactivo.Text.ToUpper()}";
 
             if (cb_tipo.SelectedIndex == 0 || cb_marca.SelectedIndex == 0)
             {
@@ -60,7 +66,7 @@ namespace registro_dañados
                 return;
             }
 
-            if (Guardar_datos(tipo, marca, modelo, num_serie, num_activo))
+            if (Guardar_datos(fecha, tipo, marca, modelo, num_serie, num_activo))
             {
                 lb_men.Text = "Datos guardados correctamente";
             }
