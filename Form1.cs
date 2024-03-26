@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Text;
 using System.Collections.Generic;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar;
 
 namespace registro_dañados
 {
@@ -76,23 +77,13 @@ namespace registro_dañados
                 }
             }
 
-            foreach (string tipo in tipos)
-            {
-                cb_tipo.Items.Add(tipo);
-            }
-
-            foreach (string marca in marcas)
-            {
-                cb_marca.Items.Add(marca);
-            }
-
             return (tipos, marcas);
         }
 
         void Actualizar_cb()
         {
-            cb_marca.Items.Clear();
             cb_tipo.Items.Clear();
+            cb_marca.Items.Clear();
 
             List<string> tipos = Cargar_tipos_marcas().tipos;
             List<string> marcas = Cargar_tipos_marcas().marcas;
@@ -106,6 +97,9 @@ namespace registro_dañados
             {
                 cb_marca.Items.Add(marca);
             }
+
+            cb_marca.SelectedIndex = 0;
+            cb_tipo.SelectedIndex = 0;
 
         }
 
@@ -131,6 +125,20 @@ namespace registro_dañados
             InitializeComponent();
             Verificar_archivos();
             Cargar_tipos_marcas();
+
+            List<string> tipos = Cargar_tipos_marcas().tipos;
+            List<string> marcas = Cargar_tipos_marcas().marcas;
+
+            foreach (string tipo in tipos)
+            {
+                cb_tipo.Items.Add(tipo);
+            }
+
+            foreach (string marca in marcas)
+            {
+                cb_marca.Items.Add(marca);
+            }
+
             cb_marca.SelectedIndex = 0;
             cb_tipo.SelectedIndex = 0;
 
