@@ -2,6 +2,14 @@ namespace registro_dañados
 {
     public partial class Form1 : Form
     {
+        public void Limpiar()
+        {
+            cb_tipo.SelectedIndex = 0;
+            cb_marca.SelectedIndex = 0;
+            txt_modelo.Text = "-";
+            txt_numactivo.Text = "-";
+            txt_numserie.Text = "-";
+        }
         public Form1()
         {
             InitializeComponent();
@@ -12,11 +20,7 @@ namespace registro_dañados
 
         private void btn_limpiar_Click(object sender, EventArgs e)
         {
-            cb_tipo.SelectedIndex = 0;
-            cb_marca.SelectedIndex = 0;
-            txt_modelo.Text = "-";
-            txt_numactivo.Text = "-";
-            txt_numserie.Text = "-";
+            Limpiar();
         }
 
         private void btn_guardar_Click(object sender, EventArgs e)
