@@ -1,13 +1,24 @@
 using System;
 using System.IO;
+using ClosedXML.Excel;
+using System.Data;
 using System.Text;
 using System.Collections.Generic;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Globalization;
 
 namespace registro_dañados
 {
     public partial class Form1 : Form
     {
+        void Imprimir_lista(List<string> lista)
+        {
+            foreach (string valor in lista)
+            {
+                Console.WriteLine(valor);
+            }
+        }
 
         void Limpiar()
         {
@@ -18,6 +29,59 @@ namespace registro_dañados
             txt_numserie.Text = "-";
 
             lb_men.Text = "Campos limpiados correctamente";
+        }
+
+        void Cargar_csv_en_datagridview()
+        {
+
+            try
+            {
+                using (StreamReader archivo = new StreamReader("dañados.csv", Encoding.UTF8))
+                {
+                    // Mostrar lineas del archivo csv en consola
+                    string linea;
+
+                    string[] columnas = archivo.ReadLine()!.Split(";");
+                    foreach (string columna in columnas)
+                    {
+                        // tabla_datos.Columns.Add(columnas[columna]);
+                        Console.WriteLine(columna);
+                        tabla_datos.Columns.Add(columna, columna);
+                    }
+
+                    while ((linea = archivo.ReadLine()!) != null)
+                    {
+
+                        string[] fila = linea.Split(";");
+                        string fecha = fila[0];
+                        string tipo = fila[1];
+                        string marca = fila[2];
+                        string modelo = fila[3];
+                        string num_serie = fila[4];
+
+                        tabla_datos.Rows.Add(fecha, tipo, marca, modelo, num_serie);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar el archivo CSV: {ex.Message}", "Error");
+            }
+        }
+
+
+
+        bool Convertir_csv_excel()
+        {
+            try
+            {
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Error al convertir el archivo: {e.Message}", "Error");
+                return false;
+            }
         }
 
         void Verificar_archivos()
@@ -117,6 +181,7 @@ namespace registro_dañados
                 {
                     archivo.WriteLine($"{fecha};{tipo};{marca};{modelo};{num_serie};{num_activo}");
                 }
+               Cargar_csv_en_datagridview();
                 return true;
             }
             catch (Exception e)
@@ -131,6 +196,7 @@ namespace registro_dañados
             InitializeComponent();
             Verificar_archivos();
             Cargar_tipos_marcas();
+            Cargar_csv_en_datagridview();
 
             List<string> tipos = Cargar_tipos_marcas().tipos;
             List<string> marcas = Cargar_tipos_marcas().marcas;
@@ -161,12 +227,12 @@ namespace registro_dañados
 
         private void btn_guardar_Click(object sender, EventArgs e)
         {
-            String fecha = lb_fecha.Text;
-            String tipo = cb_tipo.Text;
-            String marca = cb_marca.Text;
-            String modelo = txt_modelo.Text.ToUpper();
-            String num_serie = txt_numserie.Text.ToUpper();
-            String num_activo = $"80042000 {txt_numactivo.Text.ToUpper()}";
+            string fecha = lb_fecha.Text;
+            string tipo = cb_tipo.Text;
+            string marca = cb_marca.Text;
+            string modelo = txt_modelo.Text.ToUpper();
+            string num_serie = txt_numserie.Text.ToUpper();
+            string num_activo = $"80042000 {txt_numactivo.Text.ToUpper()}";
 
             if (cb_tipo.SelectedIndex == 0 || cb_marca.SelectedIndex == 0)
             {
@@ -189,6 +255,14 @@ namespace registro_dañados
         private void btn_actualizar_Click(object sender, EventArgs e)
         {
             Actualizar_cb();
+        }
+
+        private void btn_conv_excel_Click(object sender, EventArgs e)
+        {
+            if (Convertir_csv_excel())
+            {
+                MessageBox.Show("Archivo convertido correctamente", "Aviso");
+            }
         }
     }
 }

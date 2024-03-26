@@ -44,6 +44,8 @@
             btn_limpiar = new Button();
             lb_men = new Label();
             lb_fecha = new Label();
+            tabla_datos = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)tabla_datos).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -163,6 +165,7 @@
             btn_conv_excel.TabIndex = 11;
             btn_conv_excel.Text = "Convertir Excel";
             btn_conv_excel.UseVisualStyleBackColor = true;
+            btn_conv_excel.Click += btn_conv_excel_Click;
             // 
             // btn_actualizar
             // 
@@ -202,11 +205,24 @@
             lb_fecha.TabIndex = 15;
             lb_fecha.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // tabla_datos
+            // 
+            tabla_datos.AllowUserToAddRows = false;
+            tabla_datos.AllowUserToDeleteRows = false;
+            tabla_datos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            tabla_datos.Location = new Point(400, 21);
+            tabla_datos.Name = "tabla_datos";
+            tabla_datos.ReadOnly = true;
+            tabla_datos.RowHeadersWidth = 51;
+            tabla_datos.Size = new Size(611, 408);
+            tabla_datos.TabIndex = 16;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(408, 458);
+            ClientSize = new Size(1038, 458);
+            Controls.Add(tabla_datos);
             Controls.Add(lb_fecha);
             Controls.Add(lb_men);
             Controls.Add(btn_limpiar);
@@ -223,9 +239,12 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Margin = new Padding(2);
             Name = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Registro de equipos dañados";
+            ((System.ComponentModel.ISupportInitialize)tabla_datos).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -248,5 +267,6 @@
         private Button btn_limpiar;
         private Label lb_men;
         private Label lb_fecha;
+        private DataGridView tabla_datos;
     }
 }
