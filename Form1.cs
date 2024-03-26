@@ -1,3 +1,8 @@
+using System;
+using System.IO;
+using System.Text;
+using System.Collections.Generic;
+
 namespace registro_dañados
 {
     public partial class Form1 : Form
@@ -10,6 +15,24 @@ namespace registro_dañados
             txt_numactivo.Text = "-";
             txt_numserie.Text = "-";
         }
+
+        bool Guardar_datos(string tipo, string marca, string modelo, string num_activo, string num_serie)
+        {
+            try
+            {
+                using (StreamWriter archivo = new StreamWriter("dañados.csv", true, Encoding.UTF8))
+                {
+                    archivo.WriteLine($"{tipo};{marca};{modelo};{num_serie};{num_activo}");
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Error al guardar los datos: {e.Message}", "Error");
+                return false;
+            }
+        }
+
         public Form1()
         {
             InitializeComponent();
@@ -37,7 +60,16 @@ namespace registro_dañados
                 return;
             }
 
-            MessageBox.Show($"{tipo} - {marca} - {modelo} - {num_serie} - {num_activo}");
+            if (Guardar_datos(tipo, marca, modelo, num_serie, num_activo))
+            {
+                lb_men.Text = "Datos guardados correctamente";
+            }
+            else
+            {
+                lb_men.Text = "Error al guardar los datos";
+            }
+
+            Console.WriteLine($"{tipo} - {marca} - {modelo} - {num_serie} - {num_activo}");
         }
     }
 }
