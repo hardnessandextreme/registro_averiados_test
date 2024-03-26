@@ -2,7 +2,7 @@ namespace registro_dañados
 {
     public partial class Form1 : Form
     {
-        public void Limpiar()
+        void Limpiar()
         {
             cb_tipo.SelectedIndex = 0;
             cb_marca.SelectedIndex = 0;
