@@ -125,6 +125,7 @@
             // 
             // cb_tipo
             // 
+            cb_tipo.DropDownStyle = ComboBoxStyle.DropDownList;
             cb_tipo.FormattingEnabled = true;
             cb_tipo.Items.AddRange(new object[] { "- SELECCIONE TIPO -", "MONITOR", "CPU", "UPS", "ROUTER", "TELEFONO", "UBIQUITI", "SWITCH", "LECTOR BARRA", "LAPTOP" });
             cb_tipo.Location = new Point(214, 67);
@@ -135,6 +136,7 @@
             // 
             // cb_marca
             // 
+            cb_marca.DropDownStyle = ComboBoxStyle.DropDownList;
             cb_marca.FormattingEnabled = true;
             cb_marca.Items.AddRange(new object[] { "- SELECCIONE MARCA -", "HP", "DELL", "ACER", "AOC", "CISCO", "SAMSUNG", "LG", "PSION", "MICRO TIK", "NANOSTATION M2", "GRANDSTREAM", "APC", "TRIPP LITE" });
             cb_marca.Location = new Point(214, 111);
@@ -148,7 +150,7 @@
             btn_guardar.Location = new Point(41, 354);
             btn_guardar.Margin = new Padding(2);
             btn_guardar.Name = "btn_guardar";
-            btn_guardar.Size = new Size(90, 27);
+            btn_guardar.Size = new Size(83, 27);
             btn_guardar.TabIndex = 10;
             btn_guardar.Text = "Guardar";
             btn_guardar.UseVisualStyleBackColor = true;
@@ -156,17 +158,17 @@
             // 
             // btn_conv_excel
             // 
-            btn_conv_excel.Location = new Point(148, 354);
+            btn_conv_excel.Location = new Point(133, 354);
             btn_conv_excel.Margin = new Padding(2);
             btn_conv_excel.Name = "btn_conv_excel";
-            btn_conv_excel.Size = new Size(112, 27);
+            btn_conv_excel.Size = new Size(128, 27);
             btn_conv_excel.TabIndex = 11;
             btn_conv_excel.Text = "Convertir Excel";
             btn_conv_excel.UseVisualStyleBackColor = true;
             // 
             // btn_actualizar
             // 
-            btn_actualizar.Location = new Point(277, 354);
+            btn_actualizar.Location = new Point(270, 354);
             btn_actualizar.Margin = new Padding(2);
             btn_actualizar.Name = "btn_actualizar";
             btn_actualizar.Size = new Size(90, 27);
@@ -176,10 +178,10 @@
             // 
             // btn_limpiar
             // 
-            btn_limpiar.Location = new Point(148, 406);
+            btn_limpiar.Location = new Point(133, 402);
             btn_limpiar.Margin = new Padding(2);
             btn_limpiar.Name = "btn_limpiar";
-            btn_limpiar.Size = new Size(112, 27);
+            btn_limpiar.Size = new Size(128, 27);
             btn_limpiar.TabIndex = 13;
             btn_limpiar.Text = "Limpiar";
             btn_limpiar.UseVisualStyleBackColor = true;
@@ -205,7 +207,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(408, 467);
+            ClientSize = new Size(408, 458);
             Controls.Add(lb_fecha);
             Controls.Add(lb_men);
             Controls.Add(btn_limpiar);
