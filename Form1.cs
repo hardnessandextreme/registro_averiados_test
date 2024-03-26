@@ -75,7 +75,38 @@ namespace registro_dañados
                     marcas.Add(linea);
                 }
             }
+
+            foreach (string tipo in tipos)
+            {
+                cb_tipo.Items.Add(tipo);
+            }
+
+            foreach (string marca in marcas)
+            {
+                cb_marca.Items.Add(marca);
+            }
+
             return (tipos, marcas);
+        }
+
+        void Actualizar_cb()
+        {
+            cb_marca.Items.Clear();
+            cb_tipo.Items.Clear();
+
+            List<string> tipos = Cargar_tipos_marcas().tipos;
+            List<string> marcas = Cargar_tipos_marcas().marcas;
+
+            foreach (string tipo in tipos)
+            {
+                cb_tipo.Items.Add(tipo);
+            }
+
+            foreach (string marca in marcas)
+            {
+                cb_marca.Items.Add(marca);
+            }
+
         }
 
         bool Guardar_datos(string fecha, string tipo, string marca, string modelo, string num_serie, string num_activo)
@@ -143,7 +174,7 @@ namespace registro_dañados
 
         private void btn_actualizar_Click(object sender, EventArgs e)
         {
-            Cargar_tipos_marcas();
+            Actualizar_cb();
         }
     }
 }
