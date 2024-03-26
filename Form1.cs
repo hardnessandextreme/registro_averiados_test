@@ -7,7 +7,7 @@ namespace registro_dañados
 {
     public partial class Form1 : Form
     {
-        
+
         void Limpiar()
         {
             cb_tipo.SelectedIndex = 0;
@@ -53,7 +53,7 @@ namespace registro_dañados
             }
         }
 
-        void Cargar_tipos_marcas()
+        (List<string> tipos, List<string> marcas) Cargar_tipos_marcas()
         {
             List<string> tipos = new List<string>();
             List<string> marcas = new List<string>();
@@ -75,16 +75,7 @@ namespace registro_dañados
                     marcas.Add(linea);
                 }
             }
-
-            foreach (string tipo in tipos)
-            {
-                cb_tipo.Items.Add(tipo);
-            }
-
-            foreach (string marca in marcas)
-            {
-                cb_marca.Items.Add(marca);
-            }
+            return (tipos, marcas);
         }
 
         bool Guardar_datos(string fecha, string tipo, string marca, string modelo, string num_serie, string num_activo)
@@ -134,7 +125,7 @@ namespace registro_dañados
 
             if (cb_tipo.SelectedIndex == 0 || cb_marca.SelectedIndex == 0)
             {
-                MessageBox.Show("Selecciona al menos la marca y tipo del hardware.","Aviso");
+                MessageBox.Show("Selecciona al menos la marca y tipo del hardware.", "Aviso");
                 return;
             }
 
@@ -148,6 +139,11 @@ namespace registro_dañados
             }
 
             Console.WriteLine($"{tipo} - {marca} - {modelo} - {num_serie} - {num_activo}");
+        }
+
+        private void btn_actualizar_Click(object sender, EventArgs e)
+        {
+            Cargar_tipos_marcas();
         }
     }
 }

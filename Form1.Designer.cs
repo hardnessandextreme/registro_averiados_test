@@ -127,7 +127,6 @@
             // 
             cb_tipo.DropDownStyle = ComboBoxStyle.DropDownList;
             cb_tipo.FormattingEnabled = true;
-            cb_tipo.Items.AddRange(new object[] { "-" });
             cb_tipo.Location = new Point(214, 67);
             cb_tipo.Margin = new Padding(2);
             cb_tipo.Name = "cb_tipo";
@@ -138,7 +137,6 @@
             // 
             cb_marca.DropDownStyle = ComboBoxStyle.DropDownList;
             cb_marca.FormattingEnabled = true;
-            cb_marca.Items.AddRange(new object[] { "-" });
             cb_marca.Location = new Point(214, 111);
             cb_marca.Margin = new Padding(2);
             cb_marca.Name = "cb_marca";
@@ -175,6 +173,7 @@
             btn_actualizar.TabIndex = 12;
             btn_actualizar.Text = "Actualizar";
             btn_actualizar.UseVisualStyleBackColor = true;
+            btn_actualizar.Click += btn_actualizar_Click;
             // 
             // btn_limpiar
             // 
