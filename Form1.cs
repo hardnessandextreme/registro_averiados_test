@@ -53,7 +53,39 @@ namespace registro_dañados
             }
         }
 
+        void Cargar_tipos_marcas()
+        {
+            List<string> tipos = new List<string>();
+            List<string> marcas = new List<string>();
 
+            using (StreamReader archivo = new StreamReader("datos/tipos.txt", Encoding.UTF8))
+            {
+                string linea;
+                while ((linea = archivo.ReadLine()) != null)
+                {
+                    tipos.Add(linea);
+                }
+            }
+
+            using (StreamReader archivo = new StreamReader("datos/marcas.txt", Encoding.UTF8))
+            {
+                string linea;
+                while ((linea = archivo.ReadLine()) != null)
+                {
+                    marcas.Add(linea);
+                }
+            }
+
+            foreach (string tipo in tipos)
+            {
+                cb_tipo.Items.Add(tipo);
+            }
+
+            foreach (string marca in marcas)
+            {
+                cb_marca.Items.Add(marca);
+            }
+        }
 
         bool Guardar_datos(string fecha, string tipo, string marca, string modelo, string num_serie, string num_activo)
         {
@@ -76,6 +108,7 @@ namespace registro_dañados
         {
             InitializeComponent();
             Verificar_archivos();
+            Cargar_tipos_marcas();
             cb_marca.SelectedIndex = 0;
             cb_tipo.SelectedIndex = 0;
 
