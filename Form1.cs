@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using System.Globalization;
+using System.Windows.Forms;
 
 namespace registro_dañados
 {
@@ -33,6 +34,8 @@ namespace registro_dañados
 
         void Cargar_csv_en_datagridview()
         {
+            tabla_datos.Rows.Clear();
+            tabla_datos.Columns.Clear();
 
             try
             {
@@ -57,10 +60,12 @@ namespace registro_dañados
                         string marca = fila[2];
                         string modelo = fila[3];
                         string num_serie = fila[4];
+                        string num_activo = fila[5];
 
-                        tabla_datos.Rows.Add(fecha, tipo, marca, modelo, num_serie);
+                        tabla_datos.Rows.Add(fecha, tipo, marca, modelo, num_serie, num_activo);
                     }
                     tabla_datos.Sort(new MultiColumnComparer());
+                    // tabla_datos.AutoResizeColumn(5, DataGridViewAutoSizeColumnMode.AllCells);
                 }
             }
             catch (Exception ex)
@@ -68,8 +73,6 @@ namespace registro_dañados
                 MessageBox.Show($"Error al cargar el archivo CSV: {ex.Message}", "Error");
             }
         }
-
-
 
         bool Convertir_csv_excel()
         {
@@ -97,6 +100,19 @@ namespace registro_dañados
                 MessageBox.Show("No se encontró el archivo tipos.txt, se creará uno nuevo.", "Aviso");
                 using (StreamWriter archivo = new StreamWriter("datos/tipos.txt", true, Encoding.UTF8))
                 {
+                    archivo.WriteLine("SELECCIONE TIPO");
+                    archivo.WriteLine("MONITOR");
+                    archivo.WriteLine("CPU");
+                    archivo.WriteLine("UPS");
+                    archivo.WriteLine("ROUTER");
+                    archivo.WriteLine("SWITCH");
+                    archivo.WriteLine("IMPRESORA");
+                    archivo.WriteLine("TELEFONO");
+                    archivo.WriteLine("UBIQUITI");
+                    archivo.WriteLine("LECTOR BARRA");
+                    archivo.WriteLine("BATERIA LECTOR");
+                    archivo.WriteLine("SCANNER");
+                    archivo.WriteLine("LAPTOP");
 
                 }
             }
@@ -106,6 +122,22 @@ namespace registro_dañados
                 MessageBox.Show("No se encontró el archivo marcas.txt, se creará uno nuevo.", "Aviso");
                 using (StreamWriter archivo = new StreamWriter("datos/marcas.txt", true, Encoding.UTF8))
                 {
+                    archivo.WriteLine("SELECCIONE MARCA");
+                    archivo.WriteLine("HP");
+                    archivo.WriteLine("DELL");
+                    archivo.WriteLine("LENOVO");
+                    archivo.WriteLine("ACER");
+                    archivo.WriteLine("AOC");
+                    archivo.WriteLine("SAMSUNG");
+                    archivo.WriteLine("LG");
+                    archivo.WriteLine("CISCO");
+                    archivo.WriteLine("MICRO TIK");
+                    archivo.WriteLine("CISCO");
+                    archivo.WriteLine("NANOSTATION M2");
+                    archivo.WriteLine("PSION");
+                    archivo.WriteLine("GRANDSTREAM");
+                    archivo.WriteLine("APC");
+                    archivo.WriteLine("TRIPP LITE");
 
                 }
             }
@@ -175,13 +207,14 @@ namespace registro_dañados
 
         bool Guardar_datos(string fecha, string tipo, string marca, string modelo, string num_serie, string num_activo)
         {
+            Verificar_archivos();
             try
             {
                 using (StreamWriter archivo = new StreamWriter("dañados.csv", true, Encoding.UTF8))
                 {
                     archivo.WriteLine($"{fecha};{tipo};{marca};{modelo};{num_serie};{num_activo}");
                 }
-               Cargar_csv_en_datagridview();
+                Cargar_csv_en_datagridview();
                 return true;
             }
             catch (Exception e)
@@ -251,7 +284,7 @@ namespace registro_dañados
                 lb_men.Text = "Error al guardar los datos";
             }
 
-            Console.WriteLine($"{tipo} - {marca} - {modelo} - {num_serie} - {num_activo}");
+            Console.WriteLine($"{fecha} - {tipo} - {marca} - {modelo} - {num_serie} - {num_activo}");
         }
 
         private void btn_actualizar_Click(object sender, EventArgs e)

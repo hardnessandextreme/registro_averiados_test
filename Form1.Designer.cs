@@ -100,28 +100,28 @@
             // 
             // txt_modelo
             // 
-            txt_modelo.Location = new Point(214, 162);
+            txt_modelo.Location = new Point(191, 162);
             txt_modelo.Margin = new Padding(2);
             txt_modelo.Name = "txt_modelo";
-            txt_modelo.Size = new Size(146, 27);
+            txt_modelo.Size = new Size(169, 27);
             txt_modelo.TabIndex = 5;
             txt_modelo.Text = "-";
             // 
             // txt_numserie
             // 
-            txt_numserie.Location = new Point(214, 210);
+            txt_numserie.Location = new Point(191, 210);
             txt_numserie.Margin = new Padding(2);
             txt_numserie.Name = "txt_numserie";
-            txt_numserie.Size = new Size(146, 27);
+            txt_numserie.Size = new Size(169, 27);
             txt_numserie.TabIndex = 6;
             txt_numserie.Text = "-";
             // 
             // txt_numactivo
             // 
-            txt_numactivo.Location = new Point(214, 261);
+            txt_numactivo.Location = new Point(191, 261);
             txt_numactivo.Margin = new Padding(2);
             txt_numactivo.Name = "txt_numactivo";
-            txt_numactivo.Size = new Size(146, 27);
+            txt_numactivo.Size = new Size(169, 27);
             txt_numactivo.TabIndex = 7;
             txt_numactivo.Text = "-";
             // 
@@ -129,20 +129,20 @@
             // 
             cb_tipo.DropDownStyle = ComboBoxStyle.DropDownList;
             cb_tipo.FormattingEnabled = true;
-            cb_tipo.Location = new Point(214, 67);
+            cb_tipo.Location = new Point(191, 67);
             cb_tipo.Margin = new Padding(2);
             cb_tipo.Name = "cb_tipo";
-            cb_tipo.Size = new Size(146, 28);
+            cb_tipo.Size = new Size(169, 28);
             cb_tipo.TabIndex = 8;
             // 
             // cb_marca
             // 
             cb_marca.DropDownStyle = ComboBoxStyle.DropDownList;
             cb_marca.FormattingEnabled = true;
-            cb_marca.Location = new Point(214, 111);
+            cb_marca.Location = new Point(191, 111);
             cb_marca.Margin = new Padding(2);
             cb_marca.Name = "cb_marca";
-            cb_marca.Size = new Size(146, 28);
+            cb_marca.Size = new Size(169, 28);
             cb_marca.TabIndex = 9;
             // 
             // btn_guardar
@@ -158,6 +158,7 @@
             // 
             // btn_conv_excel
             // 
+            btn_conv_excel.Enabled = false;
             btn_conv_excel.Location = new Point(133, 354);
             btn_conv_excel.Margin = new Padding(2);
             btn_conv_excel.Name = "btn_conv_excel";
@@ -239,7 +240,7 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            FormBorderStyle = FormBorderStyle.FixedSingle;
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Margin = new Padding(2);
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
