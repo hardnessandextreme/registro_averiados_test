@@ -38,7 +38,6 @@ namespace registro_dañados
             {
                 using (StreamReader archivo = new StreamReader("dañados.csv", Encoding.UTF8))
                 {
-                    // Mostrar lineas del archivo csv en consola
                     string linea;
 
                     string[] columnas = archivo.ReadLine()!.Split(";");
@@ -61,6 +60,7 @@ namespace registro_dañados
 
                         tabla_datos.Rows.Add(fecha, tipo, marca, modelo, num_serie);
                     }
+                    tabla_datos.Sort(new MultiColumnComparer());
                 }
             }
             catch (Exception ex)
@@ -198,6 +198,7 @@ namespace registro_dañados
             Cargar_tipos_marcas();
             Cargar_csv_en_datagridview();
 
+            // aqui llamo al metodo que carga los combobox y los inicializo
             List<string> tipos = Cargar_tipos_marcas().tipos;
             List<string> marcas = Cargar_tipos_marcas().marcas;
 
@@ -214,8 +215,9 @@ namespace registro_dañados
             cb_marca.SelectedIndex = 0;
             cb_tipo.SelectedIndex = 0;
 
-            DateTime fecha = DateTime.Now;
 
+            // esto es para mostrar la fecha actual en el label
+            DateTime fecha = DateTime.Now;
             lb_fecha.Text = fecha.ToString("dd-MM-yyyy");
 
         }
